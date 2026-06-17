@@ -204,7 +204,7 @@ function ProductPage() {
 
   return (
     <div style={{ maxWidth:1200, margin:'0 auto', padding:isMobile?'16px':isTablet?'20px 24px':'24px 32px' }}>
-      <NavBreadcrumb items={['Ana Sayfa','Güller',product.name]}/>
+     <NavBreadcrumb items={['Ana Sayfa','Blog','İstanbul’da Çiçek Kültürü']}/>
       <div style={{ display:'grid', gridTemplateColumns:isMobile?'1fr':'1fr 1fr', gap:isMobile?20:isTablet?32:48, marginBottom:48 }}>
         {/* Gallery */}
         <div>
