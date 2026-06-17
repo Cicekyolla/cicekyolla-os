@@ -362,7 +362,7 @@ function ReviewsSection() {
               <div style={{ display:'flex', gap:4, marginBottom:10 }}>
                 {[1,2,3,4,5].map(s=>(<Star key={s} style={{ width:14, height:14, color:s<=r.rating?'#FBBF24':'#E5E7EB', fill:s<=r.rating?'#FBBF24':'#E5E7EB' }}/>))}
               </div>
-              <p style={{ fontSize:13.5, color:G[700], lineHeight:1.6, margin:'0 0 14px', fontStyle:'italic' }}Ин"“{r.text}”"</p>
+              <p style={{ fontSize:13.5, color:G[700], lineHeight:1.6, margin:'0 0 14px', fontStyle:'italic' }}<p style={{ fontSize:13.5, color:G[700], lineHeight:1.6, margin:'0 0 14px', fontStyle:'italic' }}>“{r.text}”</p>
               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
                 <div style={{ width:36, height:36, borderRadius:'50%', background:'linear-gradient(135deg,#16A34A,#D97706)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:800, color:'#fff' }}>{r.avatar}</div>
                 <div>
