@@ -1,0 +1,51 @@
+/* CICEKYOLLA OS - Premium Flower Commerce Color System */
+
+:root {
+  /* Brand Colors */
+  --cicekyolla-green-50: #f0fdf4;
+  --cicekyolla-green-100: #dcfce7;
+  --cicekyolla-green-200: #bbf7d0;
+  --cicekyolla-green-300: #86efac;
+  --cicekyolla-green-400: #4ade80;
+  --cicekyolla-green-500: #22c55e;
+  --cicekyolla-green-600: #16a34a;
+  --cicekyolla-green-700: #15803d;
+  --cicekyolla-green-800: #166534;
+  --cicekyolla-green-900: #14532d;
+
+  /* Premium Gold Accents */
+  --cicekyolla-gold-50: #fefce8;
+  --cicekyolla-gold-100: #fef9c3;
+  --cicekyolla-gold-200: #fef08a;
+  --cicekyolla-gold-300: #fde047;
+  --cicekyolla-gold-400: #facc15;
+  --cicekyolla-gold-500: #eab308;
+  --cicekyolla-gold-600: #ca8a04;
+  --cicekyolla-gold-700: #a16207;
+  --cicekyolla-gold-800: #854d0e;
+
+  /* Graphite Text */
+  --cicekyolla-graphite-50: #f9fafb;
+  --cicekyolla-graphite-100: #f3f4f6;
+  --cicekyolla-graphite-200: #e5e7eb;
+  --cicekyolla-graphite-300: #d1d5db;
+  --cicekyolla-graphite-400: #9ca3af;
+  --cicekyolla-graphite-500: #6b7280;
+  --cicekyolla-graphite-600: #4b5563;
+  --cicekyolla-graphite-700: #374151;
+  --cicekyolla-graphite-800: #1f2937;
+  --cicekyolla-graphite-900: #111827;
+
+  /* Status Colors */
+  --status-pending: #f59e0b;
+  --status-preparing: #3b82f6;
+  --status-courier: #8b5cf6;
+  --status-delivery: #06b6d4;
+  --status-delivered: #10b981;
+  --status-cancelled: #ef4444;
+
+  /* Background */
+  --dashboard-bg: #fafafa;
+  --card-bg: #ffffff;
+  --sidebar-bg: #ffffff;
+}
