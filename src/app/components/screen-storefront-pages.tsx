@@ -588,9 +588,9 @@ function SimplePage({ title, content }: { title:string; content:React.ReactNode 
 function BlogDetailPage() {
   return (
     <div style={{ padding:'40px 32px', maxWidth:760, margin:'0 auto' }}>
-      <NavBreadcrumb items={['Ana Sayfa','Blog',"İstanbul'da Çiçek Kültürü"]}/>
+      <NavBreadcrumb items={['Ana Sayfa','Blog',İstanbul’da Çiçek Kültürü"]}/>
       <div style={{ fontSize:11, color:P.purple, fontWeight:600, marginBottom:8 }}>ÇİÇEK REHBERİ</div>
-      <h1 style={{ fontSize:32, fontWeight:900, color:T.gray900, letterSpacing:'-0.04em', margin:'0 0 16px' }}>İstanbul'da Çiçek Göndermenin Sanatı</h1>
+      <h1 style={{ fontSize:32, fontWeight:900, color:T.gray900, letterSpacing:'-0.04em', margin:'0 0 16px' }}>İstanbul’da Çiçek Göndermenin Sanatı</h1>
       <div style={{ display:'flex', gap:12, marginBottom:28, alignItems:'center' }}>
         <div style={{ width:32, height:32, borderRadius:'50%', background:`linear-gradient(135deg,${P.purple},${P.mid})`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:800, color:'#fff' }}>CK</div>
         <div style={{ fontSize:12.5, color:T.gray500 }}>Cicekyolla Editör • 14 Haziran 2026 • 5 dk okuma</div>
