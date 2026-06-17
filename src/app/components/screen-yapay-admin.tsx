@@ -132,7 +132,7 @@ function Dashboard() {
           <div style={{ fontSize:13, fontWeight:700, color:T.gray800, marginBottom:16 }}>Proje Durumu</div>
           <ResponsiveContainer width="100%" height={160}>
             <PieChart>
-              <Pie data={PIE} cx="50%" cy="50%" innerRadius={45} outerRadius:70 dataKey="value" paddingAngle={2}>
+              <Pie data={PIE} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="value" paddingAngle={2}>
                 {PIE.map((entry,i)=><Cell key={i} fill={entry.color}/>)}
               </Pie>
               <Tooltip formatter={(v:number,name:string)=>[`${v} proje`,name]}/>
