@@ -588,7 +588,7 @@ function SimplePage({ title, content }: { title:string; content:React.ReactNode 
 function BlogDetailPage() {
   return (
     <div style={{ padding:'40px 32px', maxWidth:760, margin:'0 auto' }}>
-      <NavBreadcrumb items={['Ana Sayfa','Blog',İstanbul’da Çiçek Kültürü"]}/>
+    <NavBreadcrumb items={['Ana Sayfa','Blog','İstanbul’da Çiçek Kültürü']}/>
       <div style={{ fontSize:11, color:P.purple, fontWeight:600, marginBottom:8 }}>ÇİÇEK REHBERİ</div>
       <h1 style={{ fontSize:32, fontWeight:900, color:T.gray900, letterSpacing:'-0.04em', margin:'0 0 16px' }}>İstanbul’da Çiçek Göndermenin Sanatı</h1>
       <div style={{ display:'flex', gap:12, marginBottom:28, alignItems:'center' }}>
@@ -657,7 +657,7 @@ function AboutPage() {
     <div style={{ padding:'40px 32px', maxWidth:860, margin:'0 auto' }}>
       <h1 style={{ fontSize:28, fontWeight:900, color:T.gray900, letterSpacing:'-0.03em', margin:'0 0 8px' }}>Hakkımızda</h1>
       <p style={{ fontSize:15, color:T.gray500, marginBottom:28 }}>Türkiye'nin en ileri çiçek ticaret platformu</p>
-      {['Cicekyolla, 2020 yılında İstanbul'da kurulmuş bir çiçek teknoloji şirketidir. "Her özel anın en taze çiçeği" vizyonuyla yola çıkan şirketimiz, bugün Türkiye genelinde 50.000+ mutlu müşteriye hizmet vermektedir.','Aynı gün teslimat, taze garanti ve premium ambalaj ile sektörde farklı bir deneyim sunuyoruz. Floristlerimiz her buketi özenle hazırlar.'].map((p,i)=>(<p key={i} style={{ fontSize:14, color:T.gray700, lineHeight:1.9, marginBottom:16 }}>{p}</p>))}
+      {['Cicekyolla, 2020 yılında İstanbul’da kurulmuş kurulmuş bir çiçek teknoloji şirketidir. "Her özel anın en taze çiçeği" vizyonuyla yola çıkan şirketimiz, bugün Türkiye genelinde 50.000+ mutlu müşteriye hizmet vermektedir.','Aynı gün teslimat, taze garanti ve premium ambalaj ile sektörde farklı bir deneyim sunuyoruz. Floristlerimiz her buketi özenle hazırlar.'].map((p,i)=>(<p key={i} style={{ fontSize:14, color:T.gray700, lineHeight:1.9, marginBottom:16 }}>{p}</p>))}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginTop:28 }}>
         {[{n:'2020',l:'Kuruluş Yılı'},{n:'50K+',l:'Mutlu Müşteri'},{n:'81',l:'İl Teslimatı'},{n:'4.9/5',l:'Google Puan'}].map((s,i)=>(
           <div key={i} style={{ background:T.gray50, borderRadius:12, padding:'18px', textAlign:'center' }}>
