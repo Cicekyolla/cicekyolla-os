@@ -102,7 +102,7 @@ const ERRORS_404 = [
 
 const CONTENT_TEMPLATES = [
   { id:'lokasyon', name:'Lokasyon Sayfası', desc:'Sehir/ilçe bazlı SEO sayfası', icon:'📍', count:81 },
-  { id:'kategori', name:'Kategori Sayfası', desc:Ürün kategori optimizasyonu', icon:'🌹', count:24 },
+  { id:'kategori', name:'Kategori Sayfası', desc:'Ürün kategori optimizasyonu', icon:'🌹', count:24 },
   { id:'urun',     name:'Ürün Sayfası',     desc:'Product SEO schema + copy',    icon:'📦', count:48 },
   { id:'proje',    name:'Proje Sayfası',    desc:'Yapay çiçek proje sayfaları',    icon:'🏗️', count:12 },
   { id:'blog',     name:'Blog Makalesi',    desc:'SEO odaklı blog içeriği',        icon:'📝', count:32 },
