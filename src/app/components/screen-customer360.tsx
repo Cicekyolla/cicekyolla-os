@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { ArrowLeft, Phone, Mail, MapPin, ShoppingBag, Star, Gift, Calendar, TrendingUp, MessageSquare, Edit, Plus } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { T, fmtCurrency, fmtDate } from './ui-kit';
-import { CUSTOMERS, ORDERS } from '../data/yapay-store';
-
+import { CUSTOMERS, ORDERS } from '../data/store';
 export function ScreenCustomer360({ navigate, params }: { navigate?: (s:any,p?:any)=>void; params?: any }) {
   const customerId = params?.customerId;
   const customer = CUSTOMERS.find(c => c.id === customerId) || CUSTOMERS[0];
