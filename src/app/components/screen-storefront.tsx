@@ -370,12 +370,13 @@ function ReviewsSection() {
                   <div style={{ fontSize:11, color:G[400] }}>{r.city} • {r.date}</div>
                 </div>
               </div>  
-                
-      
-  
-  
-
-
+                          </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}  
 function CorporateSection() {
   const { isMobile, isTablet } = useResponsive();
   const { navigate } = useNav();
