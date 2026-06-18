@@ -82,13 +82,13 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
         <div style={{ padding:'14px 24px', borderBottom:`1px solid ${T.gray100}`, display:'flex', gap:16 }}>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <span style={{ fontSize:12.5, fontWeight:600, color:T.gray700 }}>Aktif</span>
-            <button onClick={()=>{ setActive(a=>!a); toggleProductActive(product.id); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
+            onClick={()=>{ setActive(a=>!a); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
               {active?<ToggleRight style={{ width:28, height:28, color:GR[600] }}/>:<ToggleLeft style={{ width:28, height:28, color:T.gray300 }}/>}
             </button>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <span style={{ fontSize:12.5, fontWeight:600, color:T.gray700 }}>Vitrin</span>
-            <button onClick={()=>{ setFeatured(f=>!f); toggleFeatured(product.id); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
+            onClick={()=>{ setFeatured(f=>!f); }} }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
               {featured?<ToggleRight style={{ width:28, height:28, color:AM[600] }}/>:<ToggleLeft style={{ width:28, height:28, color:T.gray300 }}/>}
             </button>
           </div>
