@@ -395,7 +395,7 @@ export function ScreenProducts() {
                     </td>
                     <td style={{ padding:'12px 14px' }}><StatusBadge status={p.status as ProdStatus}/></td>
                     <td style={{ padding:'12px 14px' }}>
-                      <button onClick={()=>{ toggleFeatured(p.id); setProducts(ps=>ps.map(x=>x.id===p.id?{...x,featured:!x.featured}:x)); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
+                      <button onClick={()=>{  setProducts(ps=>ps.map(x=>x.id===p.id?{...x,featured:!x.featured}:x)); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
                         {p.featured?<ToggleRight style={{ width:26, height:26, color:AM[600] }}/>:<ToggleLeft style={{ width:26, height:26, color:T.gray300 }}/>}
                       </button>
                     </td>
