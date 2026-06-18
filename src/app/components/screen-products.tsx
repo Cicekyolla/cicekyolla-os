@@ -231,7 +231,38 @@ const MONTHLY_PRODUCT_DATA = [
 export function ScreenProducts() {
   const [view, setView] = useState<ProdView>('catalog');
  const [products, setProducts] = useState<StorefrontProduct[]>([]);
+  React.useEffect(() => {
+  fetch('/api/products')
+    .then((res) => res.json())
+    .then((data) => {
+      const mapped = (data.products || []).map((p: any) => ({
+        id: p.id,
+        sku: p.sku || '',
+        name: p.name || '',
+        category: p.category_name || 'Genel',
+        price: Number(p.price || 0),
+        compareAtPrice: p.compare_at_price ? Number(p.compare_at_price) : undefined,
+        rating: 4.8,
+        reviewCount: 0,
+        sales: 0,
+        seoScore: 95,
+        status: p.is_active === false ? 'draft' : 'active',
+        featured: Boolean(p.is_featured),
+        variants: [],
+        image: p.image_url || '🌹',
+        slug: p.slug || '',
+      }));
+
+      setProducts(mapped);
+    })
+    .catch(() => {
+      setProducts([]);
+    });
+}, []);
   const [search, setSearch] = useState('');
+  
+  
+
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [catFilter, setCatFilter] = useState<string>('all');
   const [selected, setSelected] = useState<StorefrontProduct|null>(null);
