@@ -8,6 +8,7 @@ import { ScreenOrders }      from './components/screen-orders';
 import { ScreenCRM }         from './components/screen-crm';
 import { ScreenCustomer360 } from './components/screen-customer360';
 import { ScreenProducts }    from './components/screen-products';
+import { ScreenCatalogFoundation } from './components/screen-catalog-foundation';
 import { ScreenDelivery }    from './components/screen-delivery';
 import { ScreenCouriers }    from './components/screen-couriers';
 import { ScreenRoutes }      from './components/screen-routes';
@@ -129,10 +130,12 @@ export default function App() {
       case 'orders':       return <ScreenOrders      navigate={navigate} params={params} />;
       case 'crm':          return <ScreenCRM         navigate={navigate} params={params} />;
       case 'customer360':  return <ScreenCustomer360 navigate={navigate} params={params} />;
-      case 'products':
-      case 'categories':
-      case 'campaigns':
-      case 'seasonal':     return <ScreenProducts />;
+     case 'products':     return <ScreenProducts />;
+case 'categories':   return <ScreenCatalogFoundation module="categories" />;
+case 'collections':  return <ScreenCatalogFoundation module="collections" />;
+case 'pages':        return <ScreenCatalogFoundation module="pages" />;
+case 'campaigns':
+case 'seasonal':     return <ScreenProducts />;
       case 'delivery':
       case 'zones':        return <ScreenDelivery    navigate={navigate} params={params} />;
       case 'couriers':     return <ScreenCouriers    navigate={navigate} params={params} />;
