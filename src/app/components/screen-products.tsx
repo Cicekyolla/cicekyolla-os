@@ -6,8 +6,7 @@ import type React from 'react';
 import { Search, Plus, Filter, Download, Star, TrendingUp, Package, BarChart2, Edit2, Eye, ChevronDown, ChevronUp, X, Check, ToggleLeft, ToggleRight, Tag, Layers } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { T } from './ui-kit';
-import { STOREFRONT_PRODUCTS, toggleProductActive, toggleFeatured, type StorefrontProduct } from '../data/products-store';
-
+import type { StorefrontProduct } from '../data/products-store';
 const P  = { purple:'#7C3AED', mid:'#8B5CF6', pale:'#EDE9FE', deep:'#1E1B4B' };
 const GR = { 600:'#16A34A', 700:'#15803D', 50:'#F0FDF4', 100:'#DCFCE7' };
 const AM = { 600:'#D97706', 50:'#FFFBEB', 100:'#FEF3C7' };
