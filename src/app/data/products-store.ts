@@ -83,4 +83,4 @@ export function toggleProductActive(id: string) {
 export function toggleFeatured(id: string) {
   const product = STOREFRONT_PRODUCTS.find((p) => p.id === id);
   if (product) product.featured = !product.featured;
-}
+}export const FEATURED_PRODUCTS = STOREFRONT_PRODUCTS.filter((product) => product.featured);
