@@ -22,8 +22,10 @@ export type NavScreen =
   | 'sf-login' | 'sf-account' | 'sf-blog-detail' | 'sf-delivery' | 'sf-faq'
   | 'sf-about' | 'sf-contact' | 'sf-kvkk' | 'sf-contract' | 'sf-corporate'
   | 'sf-artificial'
-  // Commerce ops
-  | 'orders' | 'crm' | 'customer360' | 'products' | 'categories'
+ // Commerce ops
+| 'orders' | 'crm' | 'customer360' | 'products' | 'categories'
+| 'collections' | 'pages' | 'campaigns' | 'seasonal'
+| 'collections' | 'pages' | 'campaigns' | 'seasonal'
   | 'campaigns' | 'seasonal'
   // Delivery
   | 'delivery' | 'zones' | 'couriers' | 'routes' | 'wreath' | 'cards'
@@ -75,9 +77,11 @@ const NAV_GROUPS: NavGroup[] = [
   {
     title: 'Katalog',
     items: [
-      { id: 'products',    label: 'Ürün Yönetimi',    icon: Package },
-      { id: 'categories',  label: 'Kategoriler',      icon: Boxes },
-      { id: 'campaigns',   label: 'Kampanyalar',      icon: Megaphone },
+     { id: 'products',    label: 'Ürün Yönetimi', icon: Package },
+{ id: 'categories',  label: 'Kategoriler',   icon: Boxes },
+{ id: 'collections', label: 'Koleksiyonlar', icon: Layers },
+{ id: 'pages',       label: 'Sayfalar',      icon: FileText },
+{ id: 'campaigns',   label: 'Kampanyalar',   icon: Megaphone },
     ],
   },
   {
