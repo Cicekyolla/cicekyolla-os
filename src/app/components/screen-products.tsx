@@ -230,7 +230,7 @@ const MONTHLY_PRODUCT_DATA = [
 
 export function ScreenProducts() {
   const [view, setView] = useState<ProdView>('catalog');
-  const [products, setProducts] = useState([...STOREFRONT_PRODUCTS]);
+ const [products, setProducts] = useState<StorefrontProduct[]>([]);
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [catFilter, setCatFilter] = useState<string>('all');
