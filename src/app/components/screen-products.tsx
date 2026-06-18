@@ -1,7 +1,7 @@
 // CICEKYOLLA OS — Enterprise Product Management ERP
 // Full 74KB source at github.com/Cicekyolla/cicekyolla-os
 // Features: Product catalog, variant mgmt, SEO, analytics, pricing, stock
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type React from 'react';
 import { Search, Plus, Filter, Download, Star, TrendingUp, Package, BarChart2, Edit2, Eye, ChevronDown, ChevronUp, X, Check, ToggleLeft, ToggleRight, Tag, Layers } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -231,7 +231,7 @@ const MONTHLY_PRODUCT_DATA = [
 export function ScreenProducts() {
   const [view, setView] = useState<ProdView>('catalog');
  const [products, setProducts] = useState<StorefrontProduct[]>([]);
-  React.useEffect(() => {
+ useEffect(() => {
   fetch('/api/products')
     .then((res) => res.json())
     .then((data) => {
@@ -269,7 +269,7 @@ export function ScreenProducts() {
   const [sortBy, setSortBy] = useState<'name'|'price'|'rating'|'sales'>('sales');
 
   function toggleActive(id: string) {
-    toggleProductActive(id);
+    
     setProducts(ps => ps.map(p => p.id===id ? { ...p, status:p.status==='active'?'draft':'active' } : p));
   }
 
