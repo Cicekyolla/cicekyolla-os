@@ -1,15 +1,21 @@
-import { Pool } from 'pg';
+let pool: any = null;
 
-let pool: Pool | null = null;
+async function getPool() {
+  const connectionString =
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRISMA_URL;
 
-function getPool() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL is not configured');
+  if (!connectionString) {
+    throw new Error('DATABASE_URL bulunamadi');
   }
 
   if (!pool) {
+    const pg = await import('pg');
+    const Pool = pg.Pool || pg.default.Pool;
+
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString,
       ssl: { rejectUnauthorized: false },
     });
   }
@@ -23,20 +29,10 @@ export default async function handler(req: any, res: any) {
       return res.status(405).json({ ok: false, error: 'Method not allowed' });
     }
 
-    const result = await getPool().query(`
-      SELECT
-        id,
-        name,
-        slug,
-        sku,
-        price,
-        compare_at_price,
-        status,
-        is_featured,
-        seo_title,
-        seo_description,
-        created_at,
-        updated_at
+    const db = await getPool();
+
+    const result = await db.query(`
+      SELECT *
       FROM products
       ORDER BY created_at DESC
       LIMIT 100
