@@ -53,6 +53,7 @@ export const YAPAY_METRICS = {
   completedProjects: YAPAY_PROJECTS.filter(p=>p.status==='completed').length,
   activeProjects: YAPAY_PROJECTS.filter(p=>['in-progress','installation'].includes(p.status)).length,
   totalRevenue: YAPAY_PROJECTS.filter(p=>p.status==='completed').reduce((s,p)=>s+p.budget,0),
+  monthlyRevenue: 1240000,
   avgProjectValue: Math.round(YAPAY_PROJECTS.reduce((s,p)=>s+p.budget,0)/YAPAY_PROJECTS.length),
   clientSatisfaction: 4.8,
 };
