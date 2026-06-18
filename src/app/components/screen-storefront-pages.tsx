@@ -4,7 +4,7 @@
 // CategoryPage: Responsive sidebar + product grid
 // Plus: Login, Blog, Delivery, FAQ, About, Contact, Corporate, Artificial, Legal, Cart
 // Full 114KB source: github.com/Cicekyolla/cicekyolla-os
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useResponsive } from '../hooks/useResponsive';
 import type React from 'react';
 import {
@@ -408,7 +408,6 @@ function ProductPage() {
 }
 
 // useRef import for touch handlers
-const { useRef } = require('react') as typeof import('react');
 
 /* ── Account Page (CRM Connected) ── */
 function AccountPage() {
