@@ -14,7 +14,12 @@ const RD = { 600:'#DC2626', 50:'#FEF2F2' };
 
 type ProdView = 'catalog'|'analytics'|'seo'|'pricing';
 type ProdStatus = 'active'|'draft'|'archived'|'out-of-stock';
-
+function normalizeProdStatus(status: unknown): ProdStatus {
+  if (status === 'active' || status === 'draft' || status === 'archived' || status === 'out-of-stock') return status;
+  if (status === 'published') return 'active';
+  if (status === 'scheduled') return 'draft';
+  return 'draft';
+}
 const STATUS_MAP: Record<ProdStatus, { l:string; c:string; bg:string }> = {
   active:       { l:'Aktif',        c:GR[600],  bg:GR[50]  },
   draft:        { l:'Taslak',       c:AM[600],  bg:AM[50]  },
@@ -35,7 +40,7 @@ function SeoBar({ score }: { score: number }) {
 }
 
 function StatusBadge({ status }: { status: ProdStatus }) {
-  const cfg = STATUS_MAP[status];
+  STATUS_MAP[normalizeProdStatus(product.status)].c
   return <span style={{ fontSize:11, fontWeight:700, color:cfg.c, background:cfg.bg, padding:'3px 9px', borderRadius:99 }}>{cfg.l}</span>;
 }
 
@@ -226,7 +231,7 @@ const MONTHLY_PRODUCT_DATA = [
   { month:'May', revenue:378000, orders:2450, newProducts:4 },
   { month:'Haz', revenue:405000, orders:2620, newProducts:2 },
 ];
-
+useEffect(() => {
 export function ScreenProducts() {
   const [view, setView] = useState<ProdView>('catalog');
  const [products, setProducts] = useState<StorefrontProduct[]>([]);
