@@ -1,4 +1,5 @@
-import { useState, useCallback, createContext, useContext } from 'react';
+import { useState, useCallback, createContext, useContext, Component } from 'react';
+import type { ReactNode } from 'react';
 import type { NavScreen } from './components/dashboard-sidebar';
 import { DashboardSidebar } from './components/dashboard-sidebar';
 import { DashboardHeader } from './components/dashboard-header';
@@ -131,6 +132,49 @@ function renderScreen(screen: NavScreen, params: any, navigate: NavigateFn) {
   }
 }
 
+// ─── Hata kalkanı: bir ekran çökse bile tüm uygulama beyaza düşmez ───
+class ScreenErrorBoundary extends Component<
+  { children: ReactNode; onHome: () => void },
+  { hasError: boolean; msg: string }
+> {
+  constructor(props: { children: ReactNode; onHome: () => void }) {
+    super(props);
+    this.state = { hasError: false, msg: '' };
+  }
+  static getDerivedStateFromError(err: any) {
+    return { hasError: true, msg: String(err?.message ?? err) };
+  }
+  componentDidCatch(err: any) {
+    // sessizce yut; konsola düşer
+    console.error('Screen crashed:', err);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 48, maxWidth: 640, margin: '40px auto', textAlign: 'center' }}>
+          <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+          <h2 style={{ fontSize: 20, fontWeight: 800, margin: '0 0 8px' }}>
+            Bu bölüm yüklenirken bir sorun oluştu
+          </h2>
+          <p style={{ color: '#6b7280', fontSize: 14, margin: '0 0 8px' }}>
+            Sol menüden başka bir bölüme geçebilirsiniz. Bu sorun yalnızca bu ekranı etkiler.
+          </p>
+          <p style={{ color: '#9ca3af', fontSize: 12, fontFamily: 'monospace', margin: '0 0 20px', wordBreak: 'break-all' }}>
+            {this.state.msg}
+          </p>
+          <button
+            onClick={this.props.onHome}
+            style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: '#7c3aed', color: '#fff', fontWeight: 700, cursor: 'pointer' }}
+          >
+            Panele dön
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
   const [screen, setScreen] = useState<NavScreen>('dashboard');
   const [params, setParams] = useState<any>({});
@@ -154,7 +198,9 @@ export default function App() {
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
         <DashboardHeader activeScreen={screen} />
         <main style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
-          {renderScreen(screen, params, navigate)}
+          <ScreenErrorBoundary key={screen} onHome={() => navigate('dashboard')}>
+            {renderScreen(screen, params, navigate)}
+          </ScreenErrorBoundary>
         </main>
       </div>
     </div>
