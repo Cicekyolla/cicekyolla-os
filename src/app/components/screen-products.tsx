@@ -81,13 +81,13 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
         <div style={{ padding:'14px 24px', borderBottom:`1px solid ${T.gray100}`, display:'flex', gap:16 }}>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <span style={{ fontSize:12.5, fontWeight:600, color:T.gray700 }}>Aktif</span>
-            onClick={()=>{ setActive(a=>!a); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
+            <button onClick={()=>{ setActive(a=>!a); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
               {active?<ToggleRight style={{ width:28, height:28, color:GR[600] }}/>:<ToggleLeft style={{ width:28, height:28, color:T.gray300 }}/>}
             </button>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <span style={{ fontSize:12.5, fontWeight:600, color:T.gray700 }}>Vitrin</span>
-            onClick={()=>{ setFeatured(f=>!f); }} }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
+            <button onClick={()=>{ setFeatured(f=>!f); }} style={{ background:'none', border:'none', cursor:'pointer', padding:0 }}>
               {featured?<ToggleRight style={{ width:28, height:28, color:AM[600] }}/>:<ToggleLeft style={{ width:28, height:28, color:T.gray300 }}/>}
             </button>
           </div>
@@ -122,11 +122,11 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
               <div style={{ marginBottom:16 }}>
                 <label style={{ fontSize:11.5, fontWeight:700, color:T.gray500, display:'block', marginBottom:6, textTransform:'uppercase', letterSpacing:'0.06em' }}>Etiketler</label>
                 <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
-                  {product.tags.map(tag=>(<span key={tag} style={{ fontSize:12, color:P.purple, background:P.pale, border:`1px solid ${P.pale}`, padding:'3px 10px', borderRadius:99 }}>{tag}</span>))}
+                  {(product.tags ?? []).map(tag=>(<span key={tag} style={{ fontSize:12, color:P.purple, background:P.pale, border:`1px solid ${P.pale}`, padding:'3px 10px', borderRadius:99 }}>{tag}</span>))}
                 </div>
               </div>
               <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:12 }}>
-                {[{ l:'Puan', v:`★ ${product.rating}` },{ l:'Yorum', v:product.reviewCount },{ l:'Satış', v:product.sold }].map((m,i)=>(
+                {[{ l:'Puan', v:`★ ${product.rating}` },{ l:'Yorum', v:product.reviewCount },{ l:'Satış', v:product.sold ?? 0 }].map((m,i)=>(
                   <div key={i} style={{ background:T.gray50, borderRadius:10, padding:'12px', textAlign:'center' }}>
                     <div style={{ fontSize:18, fontWeight:900, color:T.gray900 }}>{m.v}</div>
                     <div style={{ fontSize:10.5, color:T.gray400 }}>{m.l}</div>
@@ -139,7 +139,7 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
           {tab==='variants'&&(
             <div>
               <div style={{ fontSize:13, fontWeight:700, color:T.gray800, marginBottom:14 }}>Varyantlar & Fiyatlar</div>
-              {product.variants.map((v,i)=>(
+              {(product.variants ?? []).map((v,i)=>(
                 <div key={v.id} style={{ background:'#fff', borderRadius:12, border:`1px solid ${T.gray200}`, padding:'14px 16px', marginBottom:10, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                   <div>
                     <div style={{ fontSize:13.5, fontWeight:700, color:T.gray900 }}>{v.label}</div>
@@ -162,7 +162,7 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
               <div style={{ marginBottom:14 }}>
                 <label style={{ fontSize:11.5, fontWeight:700, color:T.gray500, display:'block', marginBottom:6, textTransform:'uppercase', letterSpacing:'0.06em' }}>SEO Başlık</label>
                 <input defaultValue={product.seoTitle} style={{ width:'100%', height:40, padding:'0 12px', border:`1.5px solid ${T.gray200}`, borderRadius:9, fontSize:13, outline:'none', color:T.gray800, boxSizing:'border-box' }}/>
-                <div style={{ fontSize:11, color:T.gray400, marginTop:4 }}>{product.seoTitle.length}/60 karakter</div>
+                <div style={{ fontSize:11, color:T.gray400, marginTop:4 }}>{(product.seoTitle ?? '').length}/60 karakter</div>
               </div>
               <div style={{ marginBottom:14 }}>
                 <label style={{ fontSize:11.5, fontWeight:700, color:T.gray500, display:'block', marginBottom:6, textTransform:'uppercase', letterSpacing:'0.06em' }}>Meta Açıklama</label>
@@ -171,7 +171,7 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
               <div style={{ marginBottom:14 }}>
                 <label style={{ fontSize:11.5, fontWeight:700, color:T.gray500, display:'block', marginBottom:6, textTransform:'uppercase', letterSpacing:'0.06em' }}>Anahtar Kelimeler</label>
                 <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
-                  {product.seoKeywords.map(kw=>(<span key={kw} style={{ fontSize:12, color:BL[600], background:BL[50], border:`1px solid ${BL[50]}`, padding:'3px 10px', borderRadius:99 }}>{kw}</span>))}
+                  {(product.seoKeywords ?? []).map(kw=>(<span key={kw} style={{ fontSize:12, color:BL[600], background:BL[50], border:`1px solid ${BL[50]}`, padding:'3px 10px', borderRadius:99 }}>{kw}</span>))}
                 </div>
               </div>
               {/* Google preview */}
@@ -186,8 +186,8 @@ function ProductDrawer({ product, onClose }: { product: StorefrontProduct; onClo
 
           {tab==='faq'&&(
             <div>
-              <div style={{ fontSize:13, fontWeight:700, color:T.gray800, marginBottom:14 }}>Sik Sorulan Sorular ({product.faq.length})</div>
-              {product.faq.map((f,i)=>(
+              <div style={{ fontSize:13, fontWeight:700, color:T.gray800, marginBottom:14 }}>Sik Sorulan Sorular ({(product.faq ?? []).length})</div>
+              {(product.faq ?? []).map((f,i)=>(
                 <div key={i} style={{ background:T.gray50, borderRadius:10, padding:'14px 16px', marginBottom:10 }}>
                   <div style={{ fontSize:13, fontWeight:700, color:T.gray800, marginBottom:6 }}>{f.q}</div>
                   <div style={{ fontSize:12.5, color:T.gray600, lineHeight:1.5 }}>{f.a}</div>
@@ -234,22 +234,30 @@ export function ScreenProducts() {
   fetch('/api/products')
     .then((res) => res.json())
     .then((data) => {
-      const mapped = (data.products || []).map((p: any) => ({
+      // Safe mapping layer: normalize any /api/products row into a complete
+      // StorefrontProduct so the UI never reads an undefined field.
+      const mapped: StorefrontProduct[] = (data.products || []).map((p: any) => ({
         id: p.id,
-        sku: p.sku || '',
+        numId: p.sku || p.num_id || p.id || '',
         name: p.name || '',
-        category: p.category_name || 'Genel',
-        price: Number(p.price || 0),
-        compareAtPrice: p.compare_at_price ? Number(p.compare_at_price) : undefined,
-        rating: 4.8,
-        reviewCount: 0,
-        sales: 0,
-        seoScore: 95,
-        status: p.is_active === false ? 'draft' : 'active',
+        category: p.category_name || p.category || 'Genel',
+        emoji: p.emoji || '🌹',
+        status: p.is_active === false ? 'draft' : (p.status || 'active'),
         featured: Boolean(p.is_featured),
-        variants: [],
-        image: p.image_url || '🌹',
-        slug: p.slug || '',
+        isBestSeller: Boolean(p.is_best_seller),
+        isNew: Boolean(p.is_new),
+        basePrice: Number(p.price || p.base_price || 0),
+        shortDesc: p.short_desc || p.description || '',
+        careInfo: p.care_info || '',
+        tags: Array.isArray(p.tags) ? p.tags : [],
+        rating: Number(p.rating || 0),
+        reviewCount: Number(p.review_count || 0),
+        sold: Number(p.sales || p.sold || 0),
+        variants: Array.isArray(p.variants) ? p.variants : [],
+        seoTitle: p.seo_title || p.name || '',
+        seoDescription: p.seo_description || p.short_desc || '',
+        seoKeywords: Array.isArray(p.seo_keywords) ? p.seo_keywords : [],
+        faq: Array.isArray(p.faq) ? p.faq : [],
       }));
 
       setProducts(mapped);
@@ -281,15 +289,15 @@ export function ScreenProducts() {
     return true;
   });
 
-  if (sortBy==='price') filtered=[...filtered].sort((a,b)=>b.basePrice-a.basePrice);
+  if (sortBy==='price') filtered=[...filtered].sort((a,b)=>(b.basePrice||0)-(a.basePrice||0));
   if (sortBy==='rating') filtered=[...filtered].sort((a,b)=>b.rating-a.rating);
-  if (sortBy==='sales') filtered=[...filtered].sort((a,b)=>b.sold-a.sold);
+  if (sortBy==='sales') filtered=[...filtered].sort((a,b)=>(b.sold||0)-(a.sold||0));
   if (sortBy==='name') filtered=[...filtered].sort((a,b)=>a.name.localeCompare(b.name,'tr'));
 
   const activeCount = products.filter(p=>p.status==='active').length;
   const featuredCount = products.filter(p=>p.featured).length;
   const avgRating = (products.reduce((s,p)=>s+p.rating,0)/products.length).toFixed(1);
-  const totalRevenue = products.reduce((s,p)=>s+p.basePrice*p.sold,0);
+  const totalRevenue = products.reduce((s,p)=>s+(p.basePrice||0)*(p.sold||0),0);
 
   return (
     <div style={{ height:'100%', display:'flex', flexDirection:'column', overflow:'hidden', background:T.gray50 }}>
@@ -378,8 +386,8 @@ export function ScreenProducts() {
                       <span style={{ fontSize:11.5, fontWeight:600, color:BL[600], background:BL[50], padding:'3px 8px', borderRadius:99 }}>{p.category}</span>
                     </td>
                     <td style={{ padding:'12px 14px' }}>
-                      <div style={{ fontSize:13.5, fontWeight:800, color:P.purple }}>₺{p.basePrice.toLocaleString('tr-TR')}</div>
-                      <div style={{ fontSize:10.5, color:T.gray400 }}>{p.variants.length} varyant</div>
+                      <div style={{ fontSize:13.5, fontWeight:800, color:P.purple }}>₺{(p.basePrice ?? 0).toLocaleString('tr-TR')}</div>
+                      <div style={{ fontSize:10.5, color:T.gray400 }}>{(p.variants?.length ?? 0)} varyant</div>
                     </td>
                     <td style={{ padding:'12px 14px' }}>
                       <div style={{ display:'flex', alignItems:'center', gap:4 }}>
@@ -388,7 +396,7 @@ export function ScreenProducts() {
                         <span style={{ fontSize:11, color:T.gray400 }}>({p.reviewCount})</span>
                       </div>
                     </td>
-                    <td style={{ padding:'12px 14px', fontSize:13, fontWeight:700, color:T.gray800 }}>{p.sold.toLocaleString('tr-TR')}</td>
+                    <td style={{ padding:'12px 14px', fontSize:13, fontWeight:700, color:T.gray800 }}>{(p.sold ?? 0).toLocaleString('tr-TR')}</td>
                     <td style={{ padding:'12px 14px', minWidth:100 }}>
                       <SeoBar score={Math.round(85+p.rating*2)}/>
                     </td>
@@ -493,7 +501,7 @@ export function ScreenProducts() {
                       <td style={{ padding:'12px 14px' }}><div style={{ display:'flex', gap:8, alignItems:'center' }}><span style={{ fontSize:20 }}>{p.emoji}</span><div style={{ fontSize:13, fontWeight:700, color:T.gray900 }}>{p.name}</div></div></td>
                       <td style={{ padding:'12px 14px', minWidth:120 }}><SeoBar score={seoScore}/></td>
                       <td style={{ padding:'12px 14px', fontSize:12, color:T.gray600, maxWidth:200 }}><div style={{ overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{p.seoTitle}</div></td>
-                      <td style={{ padding:'12px 14px' }}><div style={{ display:'flex', gap:4, flexWrap:'wrap' }}>{p.seoKeywords.slice(0,2).map(kw=>(<span key={kw} style={{ fontSize:10.5, color:BL[600], background:BL[50], padding:'2px 7px', borderRadius:99 }}>{kw}</span>))}</div></td>
+                      <td style={{ padding:'12px 14px' }}><div style={{ display:'flex', gap:4, flexWrap:'wrap' }}>{(p.seoKeywords ?? []).slice(0,2).map(kw=>(<span key={kw} style={{ fontSize:10.5, color:BL[600], background:BL[50], padding:'2px 7px', borderRadius:99 }}>{kw}</span>))}</div></td>
                       <td style={{ padding:'12px 14px' }}><button onClick={()=>setSelected(p)} style={{ padding:'5px 10px', border:`1px solid ${T.gray200}`, borderRadius:7, background:'#fff', fontSize:11.5, cursor:'pointer', display:'flex', alignItems:'center', gap:4 }}><Edit2 style={{ width:11, height:11 }}/> Düzenle</button></td>
                     </tr>
                   );
@@ -518,13 +526,13 @@ export function ScreenProducts() {
                 {filtered.map(p=>(
                   <tr key={p.id} style={{ borderBottom:`1px solid ${T.gray50}` }}>
                     <td style={{ padding:'12px 14px' }}><div style={{ display:'flex', gap:8, alignItems:'center' }}><span style={{ fontSize:20 }}>{p.emoji}</span><div style={{ fontSize:13, fontWeight:700, color:T.gray900 }}>{p.name}</div></div></td>
-                    <td style={{ padding:'12px 14px', fontSize:14, fontWeight:900, color:P.purple }}>₺{p.basePrice.toLocaleString('tr-TR')}</td>
-                    <td style={{ padding:'12px 14px', fontSize:12.5, color:T.gray600 }}>{p.variants.length} varyant</td>
-                    <td style={{ padding:'12px 14px', fontSize:12.5, color:T.gray600 }}>{p.variants.reduce((s,v)=>s+v.stock,0)}</td>
-                    <td style={{ padding:'12px 14px', fontSize:12.5, fontWeight:600, color:T.gray800 }}>{p.sold.toLocaleString('tr-TR')}</td>
+                    <td style={{ padding:'12px 14px', fontSize:14, fontWeight:900, color:P.purple }}>₺{(p.basePrice ?? 0).toLocaleString('tr-TR')}</td>
+                    <td style={{ padding:'12px 14px', fontSize:12.5, color:T.gray600 }}>{(p.variants?.length ?? 0)} varyant</td>
+                    <td style={{ padding:'12px 14px', fontSize:12.5, color:T.gray600 }}>{(p.variants ?? []).reduce((s,v)=>s+v.stock,0)}</td>
+                    <td style={{ padding:'12px 14px', fontSize:12.5, fontWeight:600, color:T.gray800 }}>{(p.sold ?? 0).toLocaleString('tr-TR')}</td>
                     <td style={{ padding:'12px 14px' }}>
                       <div style={{ display:'flex', gap:6, alignItems:'center' }}>
-                        <input defaultValue={p.basePrice} type="number" style={{ width:100, height:32, padding:'0 8px', border:`1.5px solid ${T.gray200}`, borderRadius:7, fontSize:13, fontWeight:700, color:P.purple, outline:'none', textAlign:'right' }}/>
+                        <input defaultValue={p.basePrice ?? 0} type="number" style={{ width:100, height:32, padding:'0 8px', border:`1.5px solid ${T.gray200}`, borderRadius:7, fontSize:13, fontWeight:700, color:P.purple, outline:'none', textAlign:'right' }}/>
                         <button style={{ padding:'6px 12px', border:'none', borderRadius:7, background:GR[600], color:'#fff', fontSize:11.5, fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', gap:4 }}><Check style={{ width:11, height:11 }}/> Kaydet</button>
                       </div>
                     </td>
