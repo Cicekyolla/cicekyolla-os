@@ -231,7 +231,7 @@ const MONTHLY_PRODUCT_DATA = [
   { month:'May', revenue:378000, orders:2450, newProducts:4 },
   { month:'Haz', revenue:405000, orders:2620, newProducts:2 },
 ];
-useEffect(() => {
+
 export function ScreenProducts() {
   const [view, setView] = useState<ProdView>('catalog');
  const [products, setProducts] = useState<StorefrontProduct[]>([]);
