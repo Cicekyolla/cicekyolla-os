@@ -1,79 +1,77 @@
 @custom-variant dark (&:is(.dark *));
 
-/* CICEKYOLLA OS v3 — DESIGN SYSTEM TOKENS */
-
 :root {
-  --font-size: 14px;
-  --background: #F5F7FA;
+  --font-size: 16px;
+  --background: #FAFAFA;
+  --foreground: #111827;
   --card: #FFFFFF;
-  --foreground: #0F172A;
-  --card-foreground: #0F172A;
+  --card-foreground: #111827;
   --popover: #FFFFFF;
-  --popover-foreground: #0F172A;
-  --primary: #16A34A;
-  --primary-hover: #15803D;
-  --primary-light: #F0FDF4;
+  --popover-foreground: #111827;
+  --primary: #8B5CF6;
   --primary-foreground: #FFFFFF;
-  --secondary: #F8FAFC;
-  --secondary-foreground: #1E293B;
-  --muted: #F1F5F9;
-  --muted-foreground: #64748B;
-  --accent: #D97706;
-  --accent-light: #FFFBEB;
-  --accent-foreground: #FFFFFF;
+  --secondary: #F5F3FF;
+  --secondary-foreground: #6D28D9;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #EDE9FE;
+  --accent-foreground: #7C3AED;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --success: #16A34A;
-  --warning: #D97706;
-  --info: #2563EB;
-  --border: #E2E8F0;
-  --border-focus: #16A34A;
+  --border: rgba(0, 0, 0, 0.07);
   --input: transparent;
-  --input-background: #F8FAFC;
-  --switch-background: #CBD5E1;
-  --ring: rgba(22,163,74,0.25);
-  --chart-1: #16A34A;
-  --chart-2: #D97706;
-  --chart-3: #2563EB;
-  --chart-4: #7C3AED;
-  --chart-5: #DB2777;
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
+  --input-background: #F9F8FF;
+  --switch-background: #DDD6FE;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #8B5CF6;
+  --chart-1: #8B5CF6;
+  --chart-2: #A855F7;
+  --chart-3: #C084FC;
+  --chart-4: #DDD6FE;
+  --chart-5: #7C3AED;
+  --radius: 1rem;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #0F172A;
-  --sidebar-primary: #16A34A;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #8B5CF6;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F0FDF4;
-  --sidebar-accent-foreground: #15803D;
-  --sidebar-border: #F1F5F9;
-  --sidebar-ring: #16A34A;
-  --status-new-bg: #FFF7ED;
-  --status-new-text: #C2410C;
-  --status-delivering-bg: #ECFDF5;
-  --status-delivering-text: #065F46;
-  --status-delivered-bg: #F0FDF4;
-  --status-delivered-text: #166534;
-  --status-delivered-dot: #22C55E;
-  --status-cancelled-bg: #FEF2F2;
-  --status-cancelled-text: #991B1B;
+  --sidebar-accent: #F5F3FF;
+  --sidebar-accent-foreground: #6D28D9;
+  --sidebar-border: rgba(0, 0, 0, 0.07);
+  --sidebar-ring: #8B5CF6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -85,25 +83,39 @@
 }
 
 @layer base {
-  * { box-sizing: border-box; @apply border-border outline-ring/50; }
-  html, body { overflow-x: hidden; max-width: 100vw; }
+  * {
+    @apply border-border outline-ring/50;
+    min-width: 0;
+  }
+  html {
+    font-size: var(--font-size);
+    overflow-x: hidden;
+    max-width: 100vw;
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
   }
-  img { max-width: 100%; height: auto; }
-  html { font-size: var(--font-size); }
-  h1 { font-size: 1.75rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.03em; color: #0F172A; }
-  h2 { font-size: 1.375rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: #0F172A; }
-  h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.4; color: #0F172A; }
-  button { font-size: 0.8125rem; font-weight: 500; line-height: 1; transition: all 0.12s ease; }
-  input, textarea, select { font-size: 0.875rem; font-weight: 400; }
+  #root, [data-reactroot] {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  h1 { font-size: var(--text-2xl); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h2 { font-size: var(--text-xl);  font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h3 { font-size: var(--text-lg);  font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h4 { font-size: var(--text-base);font-weight: var(--font-weight-medium); line-height: 1.5; }
+  label  { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  button { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  input  { font-size: var(--text-base); font-weight: var(--font-weight-normal); line-height: 1.5; }
 }
-
-* { scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent; }
-*::-webkit-scrollbar { width: 4px; height: 4px; }
-*::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }

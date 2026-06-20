@@ -1,28 +1,43 @@
-# Cicekyolla OS
+# CICEKYOLLA — Premium Flower E-Commerce Platform
 
-Türkiye'nin yeni nesil çiçek, teslimat, CRM ve SEO işletim sistemi.
+Turkiye's most premium flower and decoration e-commerce platform.
 
-## Modüller
+## Tech Stack
+- React 18 + TypeScript
+- Vite 6
+- Tailwind CSS v4
+- React Router v7
+- Motion/React (Framer Motion v12)
+- Recharts
+- Radix UI
+- Embla Carousel
 
-- CRM
-- Sipariş Merkezi
-- Müşteri Yönetimi
-- Kurye Yönetimi
-- Çelenk Yönetimi
-- SEO Merkezi
-- Yapay Zeka Merkezi
-- Finans Merkezi
-- Bayilik Sistemi
+## Getting Started
 
-## Teknoloji
+```bash
+npm install
+npm run dev
+```
 
-- Next.js
-- PostgreSQL
-- Redis
-- Meilisearch
-- Cloudflare
-- Docker
+## Build
 
-## Durum
+```bash
+npm run build
+```
 
-Planlama ve mimari aşaması.
+## Structure
+
+```
+src/
+  app/
+    components/     # Shared components
+    lib/            # Data stores
+    pages/          # Storefront pages
+      admin/        # Admin panel (21 modules)
+      dekorasyon/   # Decoration sub-brand (10 pages)
+  styles/           # CSS (Tailwind, theme, responsive)
+```
+
+## Repository
+
+https://github.com/Cicekyolla/cicekyolla-os
