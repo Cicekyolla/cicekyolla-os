@@ -40,7 +40,7 @@ function SeoBar({ score }: { score: number }) {
 }
 
 function StatusBadge({ status }: { status: ProdStatus }) {
-  STATUS_MAP[normalizeProdStatus(product.status)].c
+  const cfg = STATUS_MAP[normalizeProdStatus(status)]
   return <span style={{ fontSize:11, fontWeight:700, color:cfg.c, background:cfg.bg, padding:'3px 9px', borderRadius:99 }}>{cfg.l}</span>;
 }
 
