@@ -1,7 +1,7 @@
 // CICEKYOLLA OS — Enterprise Product Management ERP
 // Full 74KB source at github.com/Cicekyolla/cicekyolla-os
 // Features: Product catalog, variant mgmt, SEO, analytics, pricing, stock
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search, Plus, Filter, Download, Star, TrendingUp, Package, BarChart2, Edit2, Eye, ChevronDown, ChevronUp, X, Check, ToggleLeft, ToggleRight, Tag, Layers } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { T } from './ui-kit';
